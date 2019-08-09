@@ -1,24 +1,60 @@
+// export const USER_FRAGMENT = `
+// fragment UserParts on User {
+//   id
+//   username
+//   email
+//   firstName
+//   lastName
+//   bio
+//   posts {
+//     id
+//     caption
+//   }
+// }
+// `;
+
+/**
+ * 1. "UserParts"는 신경쓰지 않아도 된다.
+ * 2. 영향을 주는 것은 on "User"이것 뿐 -> datamodel과 같은 이름으로 지정해주어야 한다.
+ */
 export const USER_FRAGMENT = `
-fragment UserParts on User {
   id
   username
-  email
-  firstName
-  lastName
-  bio
-  posts {
-    id
-    caption
-  }
-}
+  avatar
 `;
 
 export const COMMENT_FRAGMENT = `
-fragment CommentParts on Comment {
   id
   text
   user {
-    username
+    ${USER_FRAGMENT}
+  }
+`;
+
+export const FILES_FRAGMENT = `
+  id
+  url
+`;
+
+export const MESSAGE_FRAGMENT = `
+id
+text
+to{
+  ${USER_FRAGMENT}
+}
+from{
+  ${USER_FRAGMENT}
+}
+`;
+
+export const ROOM_FRAGMENT = `
+fragment RoomParts on Room {
+  id
+  participants {
+    ${USER_FRAGMENT}
+  }
+  messages {
+    ${MESSAGE_FRAGMENT}
   }
 }
 `;

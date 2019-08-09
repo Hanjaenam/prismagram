@@ -73,6 +73,8 @@ export default {
      *    - 이 fullName을 불러내는 상위 resolver를 뜻하는 것.
      *    - user { fullName } -> user
      *    - potato { fullName } -> potato ( potato가 user의 data를 가지고 있으면 정상 출력 )
+     *    - ⭐️ fullName은 User내부에 schema type으로 이미 지정 되어 있고, 여기서 resolver를 만들어 준 것.
+     *      - ⭐️ 즉 parent는 항상 그 schema field라는 것.
      * 2. Playground -> me { user { fullName } }
      * 3. 이 함수를 작성하지 않아도 me { user { fullName } } 은 정상적으로 실행된다.
      *    하지만, fullName field를 만든 이유는 first Name과 last Name을 붙여서
